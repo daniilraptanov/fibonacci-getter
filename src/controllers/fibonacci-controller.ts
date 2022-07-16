@@ -11,9 +11,13 @@ export class FibonacciController {
             const fibonacciService = new FibonacciServiceImpl();
             const { index } = req.body;
 
+            const existingTicketEntity = await ClientCreator.ticketRepository.search()
+                .where("index").equals(index).return.first();
+
             const ticketEntity = await ClientCreator.ticketRepository.createAndSave({
+                index: index,
                 ticket: uuidv4(),
-                fibonacci: fibonacciService.calculateFibonacci(index),
+                fibonacci: existingTicketEntity?.fibonacci || fibonacciService.calculateFibonacci(index),
             });
 
             if (!ticketEntity) {
