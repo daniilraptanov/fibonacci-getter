@@ -21,10 +21,10 @@ describe("FibonacciServiceImpl", () => {
         });
 
         test("Should return array of fibonacci numbers", () => {
-            const result = fibonacciService.calculateFibonacci(fibonacciIndexes[2]);           
+            const result = fibonacciService.calculateFibonacci(fibonacciIndexes[11]);           
             expect(result).not.toBeNull();
 
-            console.log(`RESULT by index ${fibonacciIndexes[2]} => `, result);
+            console.log(`RESULT by index ${fibonacciIndexes[11]} => `, result);
         });
     })
 });
