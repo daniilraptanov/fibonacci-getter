@@ -1,6 +1,9 @@
 import express from "express";
-import config from "../config";
+import { ClientCreator } from "./db/client";
 const cors = require("cors");
+require('dotenv-safe').config();
+
+const port = process.env.PORT;
 
 const app = express();
 
@@ -9,10 +12,16 @@ app.use("/api/v1", require("./routes/fibonacci-routes"));
 
 app.use(cors());
 
-app.listen(config.PORT, () => {
+app.listen(port, async () => {
     try {
-        return console.log(`server is listening on ${config.PORT}`);
-    } catch {
-        return console.error(`server error (on ${config.PORT})`);
+        const creatorInstance = await ClientCreator.getInstance();
+        if (!creatorInstance) {
+            throw Error("Error in ClientCreator");
+        }
+        
+        return console.log(`server is listening on ${port}`);
+    } catch (err) {
+        console.log(err);
+        return console.error(`server error (on ${port})`);
     }
 });
