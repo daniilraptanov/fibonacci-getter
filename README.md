@@ -1,6 +1,7 @@
 # fibonacci-getter
 
 (config.ts)
+
     const config = {
         PORT: 5000
     }
@@ -10,3 +11,4 @@
 
 scripts =>
     npm run server => run api
+    npm run test => run tests

@@ -1,3 +1,3 @@
 export interface IFibonacciService {
-    calculateFibonacci(index: number): number;
+    calculateFibonacci(index: number, memo: any): number;
 }
