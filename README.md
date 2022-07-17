@@ -1,5 +1,7 @@
 # fibonacci-getter
 
+# run api
+npm run server
 
-npm run server => run api
-npm run test => run tests
+# run tests
+npm run test
